@@ -12,13 +12,23 @@ import Home from "./Pages/Home/Home";
 import { Login } from "./Pages/Login/Login";
 import Products from "./Pages/Products/Products";
 import Register from "./Pages/Register/Register";
-
+import CheckOutPage from "./Pages/CheckOutPage/CheckOutPage";
 import SingleProduct from "./Pages/SingleProduct/SingleProduct";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import MobileNav from "./Components/MobileMenu/MobileNav";
+import ProfileUpdate from "./Pages/Dashboard/DashBoardList/ProfileUpdate";
 
 const ToHomePage = ({ children }) => {
   const { currentUser } = useSelector((state) => state.LoginInUser);
   if (currentUser) {
     return <Navigate to={"/"} />;
+  }
+  return children;
+};
+const ToLogin = ({ children }) => {
+  const { currentUser } = useSelector((state) => state.LoginInUser);
+  if (!currentUser) {
+    return <Navigate to={"/login"} />;
   }
   return children;
 };
@@ -28,7 +38,10 @@ const Layout = () => {
     <div>
       <Navbar></Navbar>
       <Outlet />
-      <Footer />
+
+      <div className="md:hidden">
+        <MobileNav></MobileNav>
+      </div>
     </div>
   );
 };
@@ -64,6 +77,23 @@ const router = createBrowserRouter([
           <ToHomePage>
             <Register />,
           </ToHomePage>
+        ),
+      },
+      {
+        path: "/checkout",
+
+        element: (
+          <ToLogin>
+            <CheckOutPage />
+          </ToLogin>
+        ),
+      },
+      {
+        path: "/profile/:id",
+        element: (
+          <ToLogin>
+            <Dashboard />
+          </ToLogin>
         ),
       },
     ],

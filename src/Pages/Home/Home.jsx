@@ -7,6 +7,7 @@ import NewBike from "./NewBike/NewBike";
 const Home = () => {
   return (
     <div>
+      {" "}
       <LandingPage />
       <BikeFeatures />
       <Facilities />

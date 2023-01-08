@@ -5,8 +5,11 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { NavbarCart } from "./NavbarCart";
+import { useSelector } from "react-redux";
+import ProfileDropDown from "./ProfileDropDown";
 
 export const Navbar = () => {
+  const { currentUser } = useSelector((state) => state.LoginInUser);
   const [cartOpen, setCartopen] = useState(false);
   return (
     <div>
@@ -64,15 +67,22 @@ export const Navbar = () => {
               onClick={() => setCartopen(!cartOpen)}
             />
           </div>
-          <Link
-            to={"/login"}
-            className="hidden md:block text-white cursor-pointer  p-3 lg:p-0"
-          >
-            <AccountCircleOutlinedIcon style={{ fontSize: "24px" }}>
-              {" "}
-            </AccountCircleOutlinedIcon>
-          </Link>
-          <div className=" text-white  lg:hidden">
+          {currentUser ? (
+            <div className="hidden md:block">
+              <ProfileDropDown currentUser={currentUser} />
+            </div>
+          ) : (
+            <Link
+              to={"/login"}
+              className="hidden md:block text-white cursor-pointer  p-3 lg:p-0"
+            >
+              <AccountCircleOutlinedIcon
+                style={{ fontSize: "24px" }}
+              ></AccountCircleOutlinedIcon>
+            </Link>
+          )}
+
+          <div className=" text-white  md:hidden">
             <MenuIcon></MenuIcon>
           </div>
         </div>

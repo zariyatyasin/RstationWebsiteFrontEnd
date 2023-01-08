@@ -17,7 +17,9 @@ const SingleProduct = () => {
   const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
-
+  if (!data) {
+    return <div>Loading.....</div>;
+  }
   if (isLoading) {
     return <div>Loading.....</div>;
   }

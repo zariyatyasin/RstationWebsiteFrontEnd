@@ -67,7 +67,7 @@ const Products = () => {
               </h2>
 
               <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-                <form className="  lg:block">
+                <form className=" hidden lg:block">
                   <h3 className="sr-only">Brand</h3>
                   <ul className="space-y-4 border-b border-gray-200 pb-6   text-sm font-medium text-gray-900">
                     {BrandList.map((item) => (
@@ -139,7 +139,7 @@ const Products = () => {
                 </form>
 
                 <div className="lg:col-span-3 ">
-                  <div className="h-96 rounded-lg  0 lg:h-full">
+                  <div className="  rounded-lg   lg:h-full">
                     <ProductList product={product} catId={catId}></ProductList>
                   </div>
                 </div>

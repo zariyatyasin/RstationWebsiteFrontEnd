@@ -14,11 +14,13 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import  LoginSlice  from './UserReducer/UserSlice'
+ 
 
 
 const reducers = combineReducers({
   cart: cartSlice,
-  LoginInUser:LoginSlice           
+  LoginInUser:LoginSlice,
+     
  });
  
 

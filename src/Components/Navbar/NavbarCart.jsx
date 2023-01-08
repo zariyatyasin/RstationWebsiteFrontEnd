@@ -1,18 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem } from "../../Redux/CartRducer/CartReducer";
-
+import { Link } from "react-router-dom";
 export const NavbarCart = (props) => {
   const dispatch = useDispatch();
   const cartProduct = useSelector((state) => state.cart.cartProduct);
+  const { currentUser } = useSelector((state) => state.LoginInUser);
   const open = false;
   let totalPrice = 0;
   cartProduct.map((item) => (totalPrice += item.price * item.qty));
 
   return (
     <div>
-      <div className="relative z-10" onClick={() => props.onClick(open)}>
-        <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity  "></div>
+      <div className="relative z-10">
+        <div
+          className="fixed inset-0   bg-gray-500 bg-opacity-75 transition-opacity "
+          onClick={() => props.onClick(open)}
+        ></div>
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
@@ -113,9 +117,13 @@ export const NavbarCart = (props) => {
                       Shipping and taxes calculated at checkout.
                     </p>
                     <div className="mt-6">
-                      <div className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">
+                      <Link
+                        to={currentUser ? `/checkout` : "/login"}
+                        className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                        onClick={() => props.onClick(open)}
+                      >
                         Checkout
-                      </div>
+                      </Link>
                     </div>
                     <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                       <p>

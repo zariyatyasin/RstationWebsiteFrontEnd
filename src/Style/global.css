@@ -5,6 +5,13 @@
   -webkit-text-stroke-color: white;
 }
 
+.dash-text {
+  -webkit-text-fill-color: #ea580c;
+  /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+
 .image-hover {
   position: absolute;
   top: 0;
@@ -24,5 +31,9 @@
 
 .main:hover img.image-main {
   opacity: 0;
+}
+
+.activeProfile {
+  background-color: #f1f5f9;
 }
 /*# sourceMappingURL=global.css.map */

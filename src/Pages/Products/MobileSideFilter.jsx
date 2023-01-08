@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const MobileSideFilter = () => {
   return (
-    <div className="relative   z-40 lg:hidden ">
+    <div className="relative   z-40  hidden ">
       <div className="fixed inset-0 bg-black bg-opacity-25"></div>
 
       <div className="fixed  inset-0 z-40 flex">

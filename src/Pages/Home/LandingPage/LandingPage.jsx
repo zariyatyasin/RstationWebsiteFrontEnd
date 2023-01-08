@@ -15,11 +15,11 @@ const LandingPage = () => {
                 From checkout to global sales tax compliance, companies around
                 the world use Flowbite to simplify their payment stack.
               </p>
-              <Link className="inline-flex items-center justify-center w-48 mb-3 py-3 text-base font-medium text-center   bg-orange-600 text-white ">
+              <Link className="inline-flex items-center justify-center   max-w-[192px] mb-3 px-3 py-3 text-base font-medium text-center   bg-orange-600 text-white ">
                 <span className="mr-1"> Unlock Now</span>
                 <LockOutlinedIcon></LockOutlinedIcon>
               </Link>
-              <Link className="inline-flex items-center justify-center w-48 py-3 text-base font-medium text-center text-gray-900 border border-gray-300  ">
+              <Link className="inline-flex items-center justify-center max-w-[192px] px-3 py-3 text-base font-medium text-center text-gray-900 border border-gray-300  ">
                 Speak to Sales
               </Link>
             </div>
