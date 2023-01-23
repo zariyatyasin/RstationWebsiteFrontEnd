@@ -5,28 +5,20 @@ import ProductList from "./ProductList";
 import MobileSideFilter from "./MobileSideFilter";
 import { BrandList, catergoryList, ColorCategory } from "../../Data/Category";
 
-import axios from "axios";
 import FilterBrand from "./FilterRange.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProduct } from "../../Redux/GetAllProductReducer/GetAllProductLSlice";
 const Products = () => {
   const catId = useParams().id;
+  const { AllProduct } = useSelector((state) => state.GetALLProduct);
 
   const [filters, setFilter] = useState([]);
   const [filterColor, setFilterCOlor] = useState([]);
+  const dispatch = useDispatch();
 
-  const [product, setProduct] = useState([]);
   useEffect(() => {
-    const getAllProduct = async () => {
-      try {
-        const res = catId
-          ? await axios.get(
-              `http://localhost:5000/api/products/?category=${filters}`
-            )
-          : await axios.get(`http://localhost:5000/api/products/ `);
-        setProduct(res.data);
-      } catch (error) {}
-    };
-    getAllProduct();
-  }, [filters]);
+    dispatch(fetchAllProduct({ catId, filters }));
+  }, [dispatch]);
 
   const handleChange = (e) => {
     const isChecked = e.target.checked;
@@ -140,7 +132,10 @@ const Products = () => {
 
                 <div className="lg:col-span-3 ">
                   <div className="  rounded-lg   lg:h-full">
-                    <ProductList product={product} catId={catId}></ProductList>
+                    <ProductList
+                      product={AllProduct}
+                      catId={catId}
+                    ></ProductList>
                   </div>
                 </div>
               </div>

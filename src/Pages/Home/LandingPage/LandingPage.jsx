@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <div>
-      <div className=" h-[90vh] flex flex-col items-center justify-center home ">
+      <div className=" h-[80vh]   md:h-[90vh] flex flex-col items-center justify-center home ">
         <section className="py-4 ">
           <div className="grid max-w-screen-xl justify-center px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-2">
             <div className="mr-auto place-self-center lg:text-start text-center mb-4">

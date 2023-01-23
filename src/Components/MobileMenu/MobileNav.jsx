@@ -7,9 +7,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HomeIcon from "@mui/icons-material/Home";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 export default function MobileNav() {
   const [value, setValue] = React.useState("recents");
-
+  const { currentUser } = useSelector((state) => state.LoginInUser);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -47,7 +48,11 @@ export default function MobileNav() {
         label="Profile"
         value="profile"
         icon={
-          <Link to={"/dashboard"}>
+          <Link
+            to={`${
+              !currentUser?.isAdmin ? "/profile/:link" : "/admin/profile/"
+            }`}
+          >
             <PersonIcon />
           </Link>
         }

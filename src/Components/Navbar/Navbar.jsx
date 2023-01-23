@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
@@ -61,30 +61,26 @@ export const Navbar = () => {
               style={{ fontSize: "24px" }}
             ></SearchOutlinedIcon>
           </div>
-          <div className="hidden   md:block text-white  p-3 xl:p-6">
+          <div className="   md:block text-white  p-3 xl:p-6">
             <ShoppingCartOutlinedIcon
               style={{ fontSize: "24px" }}
               onClick={() => setCartopen(!cartOpen)}
             />
           </div>
           {currentUser ? (
-            <div className="hidden md:block">
+            <div className=" md:block">
               <ProfileDropDown currentUser={currentUser} />
             </div>
           ) : (
             <Link
               to={"/login"}
-              className="hidden md:block text-white cursor-pointer  p-3 lg:p-0"
+              className="  md:block text-white cursor-pointer  p-3 lg:p-0"
             >
               <AccountCircleOutlinedIcon
                 style={{ fontSize: "24px" }}
               ></AccountCircleOutlinedIcon>
             </Link>
           )}
-
-          <div className=" text-white  md:hidden">
-            <MenuIcon></MenuIcon>
-          </div>
         </div>
       </header>
       <div className={`${cartOpen ? "block" : "hidden"}`}>
