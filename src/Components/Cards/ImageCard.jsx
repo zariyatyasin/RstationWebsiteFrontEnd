@@ -7,14 +7,14 @@ export const ImageCard = ({ item }) => {
         <div className=" relative    main  ">
           <img
             className=" rounded-t   max-w-[288px]  object-cover   h-full image-main   "
-            src={item.images[0].img1}
+            src={item?.images?.url}
             alt="Product Preview"
           />
-          <img
+          {/* <img
             className=" rounded-t object-cover w-fullmax-w-[288px]   image-hover "
             src={item.images[1].img2}
             alt="Product Preview"
-          />
+          /> */}
         </div>
       </div>
       <div className=" text-center">

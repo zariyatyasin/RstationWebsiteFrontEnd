@@ -2,10 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
-import { fetchAllProduct } from "../../Redux/GetAllProductReducer/GetAllProductLSlice";
+import {
+  deleteProduct,
+  fetchAllProduct,
+} from "../../Redux/GetAllProductReducer/GetAllProductLSlice";
 import { useNavigate } from "react-router-dom";
 const AdminProductList = () => {
   const { AllProduct } = useSelector((state) => state.GetALLProduct);
+  console.log(AllProduct);
   const dispatch = useDispatch();
   const [filters, setFilter] = useState([]);
   const [catId, setCatId] = useState([]);
@@ -13,6 +17,11 @@ const AdminProductList = () => {
   useEffect(() => {
     dispatch(fetchAllProduct({ catId, filters }));
   }, [dispatch, catId, filters]);
+
+  const deleteHandler = (id) => {
+    dispatch(deleteProduct({ id }));
+  };
+
   return (
     <div>
       <div className="flex justify-between items-start">
@@ -78,13 +87,13 @@ const AdminProductList = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100 border-t border-gray-100">
-            {AllProduct.map((item, id) => (
+            {AllProduct?.map((item, id) => (
               <tr className="hover:bg-gray-50" key={id}>
                 <td className="flex gap-3 px-6 py-4 font-normal text-gray-900">
                   <div className="relative h-10 w-10">
                     <img
                       className="h-full w-full rounded-full object-cover object-center"
-                      src={item.images[0].img1}
+                      src={item?.images?.url}
                       alt=""
                     />
                   </div>
@@ -114,7 +123,7 @@ const AdminProductList = () => {
 
                 <td className="px-6 py-4">
                   <div className="flex   gap-2">
-                    <div>
+                    <div onClick={() => deleteHandler(item._id)}>
                       <DeleteOutlineOutlinedIcon></DeleteOutlineOutlinedIcon>
                     </div>
                     <div>

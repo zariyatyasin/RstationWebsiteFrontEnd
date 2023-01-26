@@ -90,7 +90,7 @@ const SingleProduct = () => {
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
                 <img
-                  src={data?.images[0]?.img1}
+                  src={data?.images?.url}
                   alt="Model wearing plain black basic tee."
                   className="h-full w-full object-cover object-center"
                 />

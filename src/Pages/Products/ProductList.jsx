@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ImageCard } from "../../Components/Cards/ImageCard";
 
 const ProductList = ({ product }) => {
+  console.log(product);
   return (
     <div className=" grid grid-cols-1 gap-4">
       {product?.map((item) => (
